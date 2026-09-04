@@ -3,7 +3,7 @@ const apiProd = "https://6a99804853c0481726b960d2.mockapi.io/productos/producto"
 const contenedorProductos = document.querySelector(".card-container")
 const categorias = ['Todos', 'Pasto Natural', 'Pasto Sintetico', 'Terreno Cubierto'] // Array de categorías para filtrar los productos
 const contenedorCategorias = document.querySelector(".categorias") // Contenedor para los botones de categorias
-
+const inputBusqueda = document.querySelector("#inputBusqueda")
 
 
 let productos = [];// Array para almacenar los productos obtenidos de la API
@@ -16,7 +16,7 @@ async function getProductos() {
         mostrarProductos(productos);
 
     } catch (error) {
-        console.error("Error al obtener los productos:", error)
+        mostrarCardError();
     }
 }
 
@@ -24,6 +24,15 @@ async function getProductos() {
 //función para mostrar los productos en el HTML
 function mostrarProductos(array){
     contenedorProductos.innerHTML = "";//
+
+    if(array.length === 0){
+        contenedorProductos.innerHTML = `
+            <div class= "sin-resultados">
+                <h2>No se encontraron productos</h2>
+                <p>Intente con otra búsqueda o categoría.</p>
+            </div>`;
+        return;
+    }
 
     array.forEach(p => {
         contenedorProductos.innerHTML += `
@@ -38,6 +47,14 @@ function mostrarProductos(array){
     });
 }
 
+function mostrarCardError(){
+    contenedorProductos.innerHTML = `
+        <div class="card-error">
+            <h2>Error al cargar los productos</h2>
+            <p>Por favor, inténtelo de nuevo más tarde.</p>
+        </div>
+    `;
+}
 // Función para crear los botones de categorías
 function crearBotonesCategorias(cat) {
     return `<button class= "btn-categoria"> ${cat}</button>`;
@@ -64,5 +81,20 @@ function activarClickBotonesCategorias() {
         })
     })
 }
+
+//EVENTOS
+
+//Evento para filtrar con el input de búsqueda
+inputBusqueda.addEventListener("input", () => {
+    const textoBusqueda = inputBusqueda.value.toLowerCase().trim();
+
+    if(textoBusqueda !== ""){
+        const productosFiltrados = productos.filter(p => p.nombre.toLowerCase().includes(textoBusqueda));
+        mostrarProductos(productosFiltrados);
+    } else {
+        mostrarProductos(productos);
+    }
+})
+
 mostrarBotonesCategorias();
 getProductos();
