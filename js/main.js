@@ -23,8 +23,9 @@ async function getProductos() {
 //FUNCIONES
 //función para mostrar los productos en el HTML
 function mostrarProductos(array){
-    contenedorProductos.innerHTML = "";//
+    contenedorProductos.innerHTML = "";
 
+    //Creación de mensaje en caso de que no se encuentren productos
     if(array.length === 0){
         contenedorProductos.innerHTML = `
             <div class= "sin-resultados">
@@ -34,9 +35,10 @@ function mostrarProductos(array){
         return;
     }
 
+    //Creación de las cards de productos
     array.forEach(p => {
         contenedorProductos.innerHTML += `
-        <div class="card-producto">
+        <div class="card-producto" data-id="${p.id}">
             <div class="producto-img">
                 <img src="${p.imagen}" alt="${p.nombre}">
             </div>
@@ -45,8 +47,11 @@ function mostrarProductos(array){
             <h3>$${p.precio.toLocaleString('es-AR')}</h3>
         </div>`;
     });
+
+    activarClickProductos(); 
 }
 
+// Función para mostrar un mensaje de error en caso de que falle la carga de productos
 function mostrarCardError(){
     contenedorProductos.innerHTML = `
         <div class="card-error">
@@ -80,6 +85,16 @@ function activarClickBotonesCategorias() {
             }
         })
     })
+}
+
+function activarClickProductos(){
+    const cards = document.querySelectorAll(".card-producto");
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const idProducto = card.dataset.id;
+            window.location.href = `./paginas/detalle-producto.html?id=${idProducto}`;
+        });
+    });
 }
 
 //EVENTOS
