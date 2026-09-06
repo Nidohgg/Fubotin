@@ -87,12 +87,13 @@ function activarClickBotonesCategorias() {
     })
 }
 
+//Al hacer click dirige al detalle del producto...
 function activarClickProductos(){
     const cards = document.querySelectorAll(".card-producto");
     cards.forEach(card => {
         card.addEventListener("click", () => {
-            const idProducto = card.dataset.id;
-            window.location.href = `./paginas/detalle-producto.html?id=${idProducto}`;
+            const idProducto = card.dataset.id; //guarda el id del botin
+            window.location.href = `./paginas/detalle-producto.html?id=${idProducto}`; //Redirigir al cliente a la pagina de detalle
         });
     });
 }
