@@ -28,19 +28,58 @@ function mostrarCarrito(){
             <div>
                 <h3>${p.nombre}</h3>
                 <p>${p.precio.toLocaleString("es-AR")}</p>
-                <p>Cantidad: ${p.cantidad}</p>
+                <div class="botones-cantidad">
+                    <button class="btn-quitar">-</button>
+                    <p>${p.cantidad}</p>
+                    <button class="btn-agregar">+</button>
+                    <button class="btn-eliminar">eliminar</button>
+                </div>
+                <h2>Total: $</h2>
             </div>
         </div>`;
     });
 }
 
+//Actualiza la cantidad de productos que fueron agregados al carrito 
 function actualizarContador(){
     const cantidadTotal = carrito.reduce((total, producto) => total + producto.cantidad, 0);
     contadorProd.textContent = cantidadTotal;
 }
 
-mostrarCarrito();
+//agrega el producto al carrito si no hay otro igual
+function agregarAlCarrito(producto){
+    const prodExistente = carrito.find(p => p.id === producto.id);//Se pregunta si el producto que se va a agregar ya esta en el carrito
 
+    if(prodExistente){
+        prodExistente.cantidad++;
+    }else{
+        carrito.push({
+            ...producto,
+            cantidad: 1
+        });
+        
+    }
+
+    avisoCarrito('success', `${producto.nombre} agregado al carrito`);
+    guardarCarritoLocalStorage();
+    mostrarCarrito();
+    actualizarContador();
+}
+
+//no pierde el carrito si el usuario recarga o sale de la pagina 
+function guardarCarritoLocalStorage(){
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function avisoCarrito(icono, mensaje){
+    Swal.fire({
+        position: "top-end",
+        icon: icono,
+        text: mensaje,
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
 
 //EVENTOS
 //EVENTO PARA ABRIR LA VISTA PREVIA DEL CARRITO
@@ -61,3 +100,5 @@ btnVaciarCarrito.addEventListener("click", () =>{
     actualizarContador();
 })
 
+mostrarCarrito();
+actualizarContador();

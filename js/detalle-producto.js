@@ -6,6 +6,8 @@ console.log(idProducto);
 
 const apiProd = "https://6a99804853c0481726b960d2.mockapi.io/productos/producto";
 
+let producto = {};
+
 // Funcion para obtener el detalle del producto
 async function ObtenerDetalleProducto() {
     try {
@@ -15,7 +17,7 @@ async function ObtenerDetalleProducto() {
             throw new Error("Error al obtener el detalle del producto");
         }
 
-        const producto = await respuesta.json();
+        producto = await respuesta.json();
 
         mostrarDetalleProducto(producto);
        
@@ -45,6 +47,7 @@ function mostrarDetalleProducto(producto){
             </button>
         </div>
     `;
+
     const btnAgregarCarrito = document.querySelector("#btnAgregarCarrito")
     btnAgregarCarrito.addEventListener("click", () => {
         agregarAlCarrito(producto);

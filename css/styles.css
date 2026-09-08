@@ -95,3 +95,9 @@ footer{
         font-weight: 400;
     }
 }
+
+
+.producto-carrito img {
+    width: 100px;
+    height: 50px;
+}
