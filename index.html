@@ -24,6 +24,27 @@
             <!--CON BOTON DE IR AL CARRITO O CONTINUAR COMPRANDO-->
         </div>
     </header>
+    <aside class="carrito-previo" id="carrito-previo">
+        
+        <div class="carrito-header">
+            <h2>Mi carrito</h2>
+            <button id="cerrar-carrito">X</button>
+        </div>
+
+        <div id="lista-carrito">
+            <!--SE CARGAN LOS PRODUCTOS DESDE JS-->
+        </div>
+
+        <div class="carrito-footer">
+            <button id="btn-vaciar-carrito">
+                Vaciar carrito
+            </button>
+            <a href="./paginas/carrito.html" class="btn-comprar">
+                Avanzar con la compra
+            </a>
+        </div>
+
+    </aside>
     <main>
         <!--AGREGAR IMAGENES TIPO SLIDE A MODO DE PRESENTACION-->
         <div class="slider">
@@ -51,5 +72,6 @@
     </footer>
     <!--SCRIPTS DE JS-->
     <script src="js/main.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>

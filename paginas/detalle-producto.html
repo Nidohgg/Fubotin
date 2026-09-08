@@ -24,6 +24,27 @@
         </div>
     </header>
 
+    <aside class="carrito-previo" id="carrito-previo">
+        
+        <div class="carrito-header">
+            <h2>Mi carrito</h2>
+            <button id="cerrar-carrito">X</button>
+        </div>
+
+        <div id="lista-carrito">
+            <!--SE CARGAN LOS PRODUCTOS DESDE JS-->
+        </div>
+
+        <div class="carrito-footer">
+            <button id="btn-vaciar-carrito">
+                Vaciar carrito
+            </button>
+            <a href="./carrito.html" class="btn-comprar">
+                Avanzar con la compra
+            </a>
+        </div>
+    </aside>
+
     <main>
         <section class="detalle-producto">
             <div id="detalle-container">
@@ -40,5 +61,6 @@
     <!--SCRIPTS DE JS-->
     
     <script src="../js/detalle-producto.js"></script>
+    <script src="../js/carrito.js"></script>
 </body>
 </html>

@@ -18,11 +18,11 @@ async function ObtenerDetalleProducto() {
         const producto = await respuesta.json();
 
         mostrarDetalleProducto(producto);
+       
 
     } catch (error) {
         console.error(error);
     }
-
 }
 
 //Mostrar los datos del producto (imagen, descripcion, agregar al carrito)
@@ -45,7 +45,15 @@ function mostrarDetalleProducto(producto){
             </button>
         </div>
     `;
+    const btnAgregarCarrito = document.querySelector("#btnAgregarCarrito")
+    btnAgregarCarrito.addEventListener("click", () => {
+        agregarAlCarrito(producto);
+    });
 }
+
+//EVENTOS 
+
+
 
 ObtenerDetalleProducto();
 
