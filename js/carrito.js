@@ -27,14 +27,14 @@ function mostrarCarrito(){
 
             <div>
                 <h3>${p.nombre}</h3>
-                <p>${p.precio.toLocaleString("es-AR")}</p>
+                <p>$${p.precio.toLocaleString("es-AR")}</p>
                 <div class="botones-cantidad">
-                    <button class="btn-quitar">-</button>
+                    <button class="btn-quitar" data-id="${p.id}" ${p.cantidad === 1 ? "disabled" : ""}>-</button>
                     <p>${p.cantidad}</p>
-                    <button class="btn-agregar">+</button>
-                    <button class="btn-eliminar">eliminar</button>
+                    <button class="btn-agregar" data-id="${p.id}">+</button>
+                    <button class="btn-eliminar" data-id="${p.id}">eliminar</button>
                 </div>
-                <h2>Total: $</h2>
+                <h2>Subtotal: $${(p.precio * p.cantidad).toLocaleString("es-AR")}</h2>
             </div>
         </div>`;
     });
@@ -61,9 +61,7 @@ function agregarAlCarrito(producto){
     }
 
     avisoCarrito('success', `${producto.nombre} agregado al carrito`);
-    guardarCarritoLocalStorage();
-    mostrarCarrito();
-    actualizarContador();
+    actualizarCarrito();
 }
 
 //no pierde el carrito si el usuario recarga o sale de la pagina 
@@ -71,6 +69,7 @@ function guardarCarritoLocalStorage(){
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+//funcion para notificar al usuario que se agrego un producto al carrito
 function avisoCarrito(icono, mensaje){
     Swal.fire({
         position: "top-end",
@@ -79,6 +78,41 @@ function avisoCarrito(icono, mensaje){
         showConfirmButton: false,
         timer: 1500
     });
+}
+
+function actualizarCarrito() {
+
+    guardarCarritoLocalStorage();
+    mostrarCarrito();
+    actualizarContador();
+}
+
+//funcion para aumentar la cantida de un item en el carrito
+function aumentarCantidad(id){
+    const producto = carrito.find(p => String(p.id) === String(id));
+
+    if(producto){
+        producto.cantidad++;
+        actualizarCarrito();
+    }
+}
+
+//funcion para disminuir la cantida de un item en el carrito
+
+function disminuirCantidad(id){
+    const producto = carrito.find(p => String(p.id) === String(id));
+
+    if(producto && producto.cantidad > 1){
+        producto.cantidad--;
+        actualizarCarrito();
+    }
+}
+
+
+function eliminarProducto(id){
+    carrito = carrito.filter(p => String(p.id) !== String(id));
+
+    actualizarCarrito();
 }
 
 //EVENTOS
@@ -99,6 +133,31 @@ btnVaciarCarrito.addEventListener("click", () =>{
     mostrarCarrito();
     actualizarContador();
 })
+
+//EVENTOS PARA AGREGAR, QUITAR O ELIMINAR UN PRODUCTO DEL CARRITO
+listaCarrito.addEventListener("click", (e) => {
+    const boton = e.target.closest("button");
+
+    if(!boton){
+        return;
+    }
+
+    const idProducto = boton.dataset.id;
+
+    if(boton.classList.contains("btn-agregar")){
+        aumentarCantidad(idProducto);
+    }
+
+    if(boton.classList.contains("btn-quitar")){
+        disminuirCantidad(idProducto);
+    }
+
+    if(boton.classList.contains("btn-eliminar")){
+        eliminarProducto(idProducto);
+    }
+
+})
+
 
 mostrarCarrito();
 actualizarContador();
