@@ -10,31 +10,9 @@ body{
     font-family: "Sansation", sans-serif;
 }
 
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    color: #fff;
-    background-color: #10a30b;
-    box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.268);
-    & .titulo{
-        float: left;
-        margin: 0;
-    }
-    & h1, h3{
-        margin: 0;
-    }
-    & h1{
-        font-size: 25px;
-        font-weight: 700;
-    }
-    & h3{
-        font-size: 14px;
-        font-weight: 400;
-        padding-top: 5px;
-        color: #dbd9d9;
-    }
+.navbar-fubotin{
+    background-color: #143fcc;
+    color: #f5f5f5;
 }
 
 .pre-Carrito{
@@ -77,7 +55,16 @@ body{
 }
 
 main{
-    flex: 1;
+   background-color: white;
+}
+.btn-color-cat{
+    background-color: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.btn-color-cat:hover{
+    font-size: 17px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 footer{

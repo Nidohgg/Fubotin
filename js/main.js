@@ -62,7 +62,7 @@ function mostrarCardError(){
 }
 // Función para crear los botones de categorías
 function crearBotonesCategorias(cat) {
-    return `<button class= "btn-categoria"> ${cat}</button>`;
+    return `<button class= "btn-categoria btn btn-color-cat"> ${cat}</button>`;
 }
 // Función para mostrar los botones de categorías en el HTML
 function mostrarBotonesCategorias() {
