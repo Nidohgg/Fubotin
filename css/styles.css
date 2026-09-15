@@ -67,7 +67,7 @@ main{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-footer{
+/*footer{
     max-width: 100%;
 
     & .foot{
@@ -82,6 +82,7 @@ footer{
         font-weight: 400;
     }
 }
+*/
 
 
 .producto-carrito img {

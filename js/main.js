@@ -38,13 +38,13 @@ function mostrarProductos(array){
     //Creación de las cards de productos
     array.forEach(p => {
         contenedorProductos.innerHTML += `
-        <div class="card-producto" data-id="${p.id}">
-            <div class="producto-img">
-                <img src="${p.imagen}" alt="${p.nombre}">
+        <div class="card card-producto" data-id="${p.id}">
+            <img src="${p.imagen}" class="card-img-top" alt="${p.nombre}">
+            <div class= "card-body">
+                <h5 class="card-title">${p.nombre}</h5>
+                <p class="card-text">${p.marca}</p>
+                <h4 class= "card-text">$${p.precio.toLocaleString('es-AR')}</h4>
             </div>
-            <h2>${p.nombre}</h2>
-            <p>${p.marca}</p>
-            <h3>$${p.precio.toLocaleString('es-AR')}</h3>
         </div>`;
     });
 
