@@ -3,6 +3,7 @@
 body{
     user-select: none;
     margin: 0;
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,7 +11,7 @@ body{
     font-family: "Sansation", sans-serif;
 }
 
-.navbar-fubotin{
+.bg-fubotin{
     background-color: #143fcc;
     color: #f5f5f5;
 }
@@ -19,10 +20,11 @@ body{
     position: relative;
     font-size: 24px;
     cursor: pointer;
+    padding-right: 10px;
     & span{
         position: absolute;
         top: -10px;
-        right: -10px;
+        right: -1px;
         background-color: #ff0000;
         color: #fff;
         width: 20px;
@@ -56,6 +58,7 @@ body{
 
 main{
    background-color: white;
+   flex: 1;
 }
 .btn-color-cat{
     background-color: white;
@@ -67,24 +70,39 @@ main{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/*footer{
-    max-width: 100%;
-
-    & .foot{
-        padding: 20px;
-        text-align: center;
-        color: #fff;
-        background-color: #11770e;
-        box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.268);
-    }
-    & h4{
-        font-size: 14px;
-        font-weight: 400;
-    }
+.card-producto{
+    cursor: pointer;
+    transition: transform 0.3s ease,box-shadow 0.3s ease
 }
-*/
+
+.card-producto:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);;
+}
+
+.detalle-img img{
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+}
+
+.btn-color-compra{
+    background-color: #143fcc;
+    color: white;
+    font-weight: 400;
+}
 
 
+.foot{
+    background-color: #143fcc;
+    color: white;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 20px;
+}
+    
 .producto-carrito img {
     width: 100px;
     height: 50px;

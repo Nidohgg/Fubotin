@@ -20,7 +20,6 @@ async function ObtenerDetalleProducto() {
         producto = await respuesta.json();
 
         mostrarDetalleProducto(producto);
-       
 
     } catch (error) {
         console.error(error);
@@ -31,21 +30,24 @@ async function ObtenerDetalleProducto() {
 //Ver de agregar Seleccion de talles...
 function mostrarDetalleProducto(producto){
     contenedorDetalle.innerHTML = `
-        <div class= "detalle-imagen">
-            <img src="${producto.imagen}" alt = "${producto.nombre}">
+    <div class="row g-5 align-items-start">
+        <div class="detalle-img col-12 col-lg-7">
+            <img src="${producto.imagen}" class= "img-fluid rounded" alt = "${producto.nombre}">
         </div>
-        <div class="detalle-info">
-            <h1>${producto.nombre}</h1>
-            <p>${producto.marca}</p>
-            <h2>$${producto.precio.toLocaleString('es-AR')}</h2>
-            <p>${producto.descripcion}</p>
+        <div class="col-12 col-lg-5">
+            <h1 class="mb-3">${producto.nombre}</h1>
+            <p class="mb-2">${producto.marca}</p>
+            <h2 class="mb-4">$${producto.precio.toLocaleString('es-AR')}</h2>
+            <p class="descr-prod">${producto.descripcion}</p>
             <div>
                 <p>Selecciona tu talle</p>
             </div>
-            <button id="btnAgregarCarrito">
+            <button class="btn btn-color-compra btn-lg w-100 mt-4" id="btnAgregarCarrito">
                 Agregar al carrito
             </button>
         </div>
+    </div>
+        
     `;
 
     const btnAgregarCarrito = document.querySelector("#btnAgregarCarrito")

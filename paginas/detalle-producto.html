@@ -5,30 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fubotin| Detalle del Producto</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+     <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--FIN BOOTSTRAP-->
     <link rel="stylesheet" href="../css/styles.css">  
 </head>
 <body>
     <header>
-        <div class="header">
-            <div class="titulo">
-                <h1><a href="../index.html">FUBOTÍN</a></h1>
-                <h3>Los botines que buscas en un solo lugar.</h3>
+        <div class="navbar navbar-expand-lg bg-fubotin" >
+            <div class="container-fluid">
+                <div>
+                    <a class="navbar-brand" href="../index.html">FUBOTÍN</a>
+                    <h6>Los botines que buscas en un solo lugar.</h6>
+                </div>
+                <!--ICONO CARRITO-->
+                <div class="pre-Carrito" id="btnCarrito">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="contadorProd" id="contadorProd">0</span><!-- Contador de productos en el carrito -->
+                </div>
             </div>
-            <!--ICONO CARRITO-->
-            <div class="pre-Carrito" id="btnCarrito">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="contadorProd" id="contadorProd">0</span><!-- Contador de productos en el carrito -->
-            </div>
-            <!--TENGO QUE AGREGAR PREVISUALIZACION QUE AL CLIQUEAR EL CARRITO MUESTRE LA LISTA DE PRODUCTOS SELECCIONADOS-->
-            <!--CON BOTON DE IR AL CARRITO O CONTINUAR COMPRANDO-->
         </div>
     </header>
 
     <aside class="carrito-previo" id="carrito-previo">
         
-        <div class="carrito-header">
-            <h2>Mi carrito</h2>
-            <button id="cerrar-carrito">X</button>
+        <div class="d-flex justify-content-between align-items-center ">
+            <h2 class="mb-0zz">Mi carrito</h2>
+            <button type="button" class="btn-close" id="cerrar-carrito" aria-label="Cerrar"></button>
         </div>
 
         <div id="lista-carrito">
@@ -39,27 +42,27 @@
             <button id="btn-vaciar-carrito">
                 Vaciar carrito
             </button>
-            <a href="./carrito.html" class="btn-comprar">
+            <a href="./paginas/carrito.html" class="btn-comprar">
                 Avanzar con la compra
             </a>
         </div>
     </aside>
 
     <main>
-        <section class="detalle-producto">
-            <div id="detalle-container">
+        <section>
+            <div class="container" id="detalle-container">
                 <!--SE CARGARA EL DETALLE DEL PRODUCTO -->
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="foot">
+    <footer class="foot">
+        <div>
             <h4>© 2024 Fubotin. Todos los derechos reservados.</h4>
         </div>
     </footer>
     <!--SCRIPTS DE JS-->
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="../js/detalle-producto.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/carrito.js"></script>
