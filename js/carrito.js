@@ -3,7 +3,7 @@ const carritoPrevio = document.querySelector("#carrito-previo");
 const cerrarCarrito = document.querySelector("#cerrar-carrito");
 
 const listaCarrito = document.querySelector("#lista-carrito");
-const btnVaciarCarrito = document.querySelector("#btn-vaciar-carrito");
+//const btnVaciarCarrito = document.querySelector("#btn-vaciar-carrito");
 
 const contadorProd = document.querySelector("#contadorProd");
 
@@ -14,30 +14,52 @@ function mostrarCarrito(){
     listaCarrito.innerHTML = "";
     if(carrito.length === 0){
         listaCarrito.innerHTML = `
-        <p>
-            El carrito se encuentra vacío.
-        </p>`;
+        <div class="alert alert-primary d-flex align-items-center gap-3" role="alert">
+            <i class="fa-solid fa-circle-info"></i>
+            <span> El carrito se encuentra vacio.</span>
+</div>
+        `;
         return;
     }
 
     carrito.forEach(p => {
         listaCarrito.innerHTML += `
-        <div class="producto-carrito">
-            <img src="${p.imagen}" alt="${p.nombre}">
+        <div class="prod-carrito">
 
-            <div>
+            <div class="prod-carrito-img">
+                <img src="${p.imagen}" alt="${p.nombre}">
+            </div>
+            
+            <div class="prod-info">
                 <h3>${p.nombre}</h3>
-                <p>$${p.precio.toLocaleString("es-AR")}</p>
-                <div class="botones-cantidad">
-                    <button class="btn-quitar" data-id="${p.id}" ${p.cantidad === 1 ? "disabled" : ""}>-</button>
-                    <p>${p.cantidad}</p>
-                    <button class="btn-agregar" data-id="${p.id}">+</button>
-                    <button class="btn-eliminar" data-id="${p.id}">eliminar</button>
+                <p class="prod-marca">${p.marca}</p>
+                <p class="prod-precio">$${p.precio.toLocaleString("es-AR")}</p>
+
+                <div class="cant-carrito">
+                    <button class="btn btn-quitar" type="button" data-id="${p.id}" ${p.cantidad === 1 ? "disabled" : ""}>-</button>
+                    <span>${p.cantidad}</span>
+                    <button class="btn btn-agregar" type="button" data-id="${p.id}">+</button>
+                    <button class="btn-eliminar" type="button" data-id="${p.id}">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                 </div>
-                <h2>Subtotal: $${(p.precio * p.cantidad).toLocaleString("es-AR")}</h2>
+                <p class="subtotal-carrito">
+                    Subtotal: <strong> $${(p.precio * p.cantidad).toLocaleString("es-AR")}</strong>
+                </p>
+                
             </div>
         </div>`;
     });
+
+    listaCarrito.innerHTML+= `
+    <div class="carrito-footer">
+            <a href="#" class="btn-comprar">
+                Avanzar con la compra
+            </a>
+            <button class="btn btnVaciarCarrito">
+                Vaciar carrito
+            </button>
+        </div>`
 }
 
 //Actualiza la cantidad de productos que fueron agregados al carrito 
@@ -127,12 +149,21 @@ cerrarCarrito.addEventListener("click", () => {
 });
 
 //EVENTO PARA VACIAR EL CARRITO
-btnVaciarCarrito.addEventListener("click", () =>{
-    carrito = [];
-    localStorage.removeItem("carrito");
-    mostrarCarrito();
-    actualizarContador();
+listaCarrito.addEventListener("click", (e) =>{
+    const boton = e.target.closest("button");
+
+    if(!boton){
+        return;
+    }
+    
+    if(boton.classList.contains("btnVaciarCarrito")){
+        carrito = [];
+        localStorage.removeItem("carrito");
+        mostrarCarrito();
+        actualizarContador();
+    }
 })
+    
 
 //EVENTOS PARA AGREGAR, QUITAR O ELIMINAR UN PRODUCTO DEL CARRITO
 listaCarrito.addEventListener("click", (e) => {

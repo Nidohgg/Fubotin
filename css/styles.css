@@ -15,7 +15,7 @@ body{
     background-color: #143fcc;
     color: #f5f5f5;
 }
-
+/*INICIO ESTILOS CARRITO*/
 .pre-Carrito{
     position: relative;
     font-size: 24px;
@@ -41,13 +41,15 @@ body{
     position: fixed;
     top: 0;
     right: -400px;
-    width: 350px;
+    width: 400px;
+    max-width: 100%;
     height: 100vh;
     background-color: white;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    /*box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);*/
+    box-shadow: -8px 0 35px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
     transition: right 0.3s ease;
     z-index: 1000;
 }
@@ -55,6 +57,142 @@ body{
 .carrito-previo.abrir{
     right: 0;
 }
+
+.prod-carrito{
+    display: flex;
+    gap: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid #c6c6c7;
+}
+
+.prod-carrito-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prod-carrito-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.prod-info{
+    width: 100%;
+}
+
+.prod-info h3{
+    font-size: 18px;
+    margin: 0 0 5px;
+}
+
+.prod-marca{
+    font-size: 14px;
+    color:1b1b1b;
+    margin: 0;
+}
+
+.prod-precio{
+    font-size: 17px;
+    color: #1b1b1b;
+    margin: 8px 0;
+}
+
+.cant-carrito{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #c6c6c7;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cant-carrito button{
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: white;
+    color: #777;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cant-carrito button:hover:not(:disabled){
+    background-color: #c6c6c7;
+}
+
+.cant-carrito span{
+    text-align: center;
+    width: 35px;
+}
+
+.btn-eliminar{
+    border: none;
+    background-color: none;
+    color: #777;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.btn-eliminar:hover{
+    color: #dc3545;
+}
+
+
+.subtotal-carrito{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.carrito-footer{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btnVaciarCarrito{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #c6c6c7;
+    border-radius: 7px;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btnVaciarCarrito:hover{
+    background-color: #f1f1f1;
+    transform: translate(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.20);
+}
+
+.btn-comprar{
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #143fcc;
+    color: white;
+    border-radius: 7px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-comprar:hover{
+    color: white;
+    transform: translate(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.20);
+}
+
+/*FIN ESTILOS CARRITO */
+
 
 main{
    background-color: white;
@@ -77,7 +215,7 @@ main{
 
 .card-producto:hover{
     transform: scale(1.03);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .detalle-img img{
@@ -86,13 +224,28 @@ main{
     object-fit: contain;
 }
 
-.btn-color-compra{
+.nombre-prod{
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+.precio-prod{
+    font-weight: 700;
+}
+
+.btn-agregar{
     background-color: #143fcc;
     color: white;
     font-weight: 400;
+    transition: border 0.2s ease, transform 0.3s ease,box-shadow 0.3s ease;
 }
 
+.btn-agregar:hover{
+    border: 1px solid #c6c6c7;
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
+/*FOOTER*/
 .foot{
     background-color: #143fcc;
     color: white;
@@ -102,8 +255,4 @@ main{
     justify-content: center;
     padding: 25px 20px;
 }
-    
-.producto-carrito img {
-    width: 100px;
-    height: 50px;
-}
+/*FIN FOOTER*/

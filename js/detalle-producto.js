@@ -35,14 +35,14 @@ function mostrarDetalleProducto(producto){
             <img src="${producto.imagen}" class= "img-fluid rounded" alt = "${producto.nombre}">
         </div>
         <div class="col-12 col-lg-5">
-            <h1 class="mb-3">${producto.nombre}</h1>
+            <h1 class="nombre-prod mb-3">${producto.nombre}</h1>
             <p class="mb-2">${producto.marca}</p>
-            <h2 class="mb-4">$${producto.precio.toLocaleString('es-AR')}</h2>
+            <h2 class="precio-prod mb-4">$${producto.precio.toLocaleString('es-AR')}</h2>
             <p class="descr-prod">${producto.descripcion}</p>
             <div>
                 <p>Selecciona tu talle</p>
             </div>
-            <button class="btn btn-color-compra btn-lg w-100 mt-4" id="btnAgregarCarrito">
+            <button class="btn btn-agregar btn-lg w-100 mt-4" id="btnAgregarCarrito">
                 Agregar al carrito
             </button>
         </div>
