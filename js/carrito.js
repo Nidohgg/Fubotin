@@ -17,8 +17,7 @@ function mostrarCarrito(){
         <div class="alert alert-primary d-flex align-items-center gap-3" role="alert">
             <i class="fa-solid fa-circle-info"></i>
             <span> El carrito se encuentra vacio.</span>
-</div>
-        `;
+        </div>`;
         return;
     }
 
@@ -94,11 +93,16 @@ function guardarCarritoLocalStorage(){
 //funcion para notificar al usuario que se agrego un producto al carrito
 function avisoCarrito(icono, mensaje){
     Swal.fire({
+        toast: true,
         position: "top-end",
         icon: icono,
+        iconColor:"#143fcc",
         text: mensaje,
+        background: "rgb(5, 5, 5)",
+        color: "rgb(252, 252, 252)",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
+        timeProgressBar: true,
     });
 }
 
