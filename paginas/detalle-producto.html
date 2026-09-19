@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fubotin| Detalle del Producto</title>
+    <title>FUBOTÍN|Detalle del Producto</title>
+    <link rel="icon" type="image/png" href="../images/futbol.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-     <!--BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!--FIN BOOTSTRAP-->
-    <link rel="stylesheet" href="../css/styles.css">  
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
     <header>
-        <div class="navbar navbar-expand-lg bg-fubotin" >
+        <div class="navbar navbar-expand-lg bg-fubotin">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand" href="../index.html">FUBOTÍN</a>
+                    <div class="titulo-fubotin">
+                        <a href="../index.html">FUBOTÍN</a>
+                    </div>
                     <h6>Los botines que buscas en un solo lugar.</h6>
                 </div>
                 <!--ICONO CARRITO-->
-                <div class="pre-Carrito" id="btnCarrito">
+                <div class="pre-Carrito carritoAnim" id="btnCarrito">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="contadorProd" id="contadorProd">0</span><!-- Contador de productos en el carrito -->
                 </div>
@@ -28,7 +34,7 @@
     </header>
 
     <aside class="carrito-previo" id="carrito-previo">
-        
+
         <div class="d-flex justify-content-between align-items-center ">
             <h2 class="mb-0zz">Mi carrito</h2>
             <button type="button" class="btn-close" id="cerrar-carrito" aria-label="Cerrar"></button>
@@ -52,11 +58,38 @@
             <h4>© 2024 Fubotin. Todos los derechos reservados.</h4>
         </div>
     </footer>
+    <div class="modal fade" id="compraFinalizada" tabindex="-1" aria-labelledby="compraFinalizadaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-center">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="compraFinalizadaLabel">¡Compra finalizada!</h1>
+                    <button type="button" class="btn-close btn-close-color" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <i class="fa-solid fa-circle-check fs-1 text-success mb-3"></i>
+
+                    <h4>¡Gracias por tu compra!</h4>
+
+                    <p>
+                        Tu compra se realizó correctamente.
+                    </p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar comprando</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--SCRIPTS DE JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="../js/detalle-producto.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/carrito.js"></script>
-    
+
 </body>
+
 </html>

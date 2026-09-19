@@ -52,9 +52,9 @@ function mostrarCarrito(){
 
     listaCarrito.innerHTML+= `
     <div class="carrito-footer">
-            <a href="#" class="btn-comprar">
-                Avanzar con la compra
-            </a>
+            <button href="#" class="btn-comprar" data-bs-toggle="modal" data-bs-target="#compraFinalizada">
+                Finalizar compra
+            </button>
             <button class="btn btnVaciarCarrito">
                 Vaciar carrito
             </button>
@@ -82,7 +82,9 @@ function agregarAlCarrito(producto){
     }
 
     avisoCarrito('success', `${producto.nombre} agregado al carrito`);
+    animarCarritoAgregado();
     actualizarCarrito();
+    
 }
 
 //no pierde el carrito si el usuario recarga o sale de la pagina 
@@ -94,7 +96,7 @@ function guardarCarritoLocalStorage(){
 function avisoCarrito(icono, mensaje){
     Swal.fire({
         toast: true,
-        position: "top-end",
+        position: "bottom-end",
         icon: icono,
         iconColor:"#143fcc",
         text: mensaje,
@@ -141,11 +143,20 @@ function eliminarProducto(id){
     actualizarCarrito();
 }
 
+//FUNCIONES PARA ANIMACIONES
+function animarCarritoAgregado(){
+    btnCarrito.classList.add("carritoAnim");
+    setTimeout(() => {
+        btnCarrito.classList.remove("carritoAnim");
+    },500)
+}
+
 //EVENTOS
 //EVENTO PARA ABRIR LA VISTA PREVIA DEL CARRITO
 btnCarrito.addEventListener("click", () => {
     carritoPrevio.classList.add("abrir");
 });
+
 
 //EVENTO PARA CERRAR LA VISTA PREVIA DEL CARRITO
 cerrarCarrito.addEventListener("click", () => {
@@ -167,7 +178,19 @@ listaCarrito.addEventListener("click", (e) =>{
         actualizarContador();
     }
 })
-    
+
+//EVENTO PARA FINALIZAR LA COMPRA
+listaCarrito.addEventListener("click", (e) => {
+    const boton = e.target.closest("button");
+
+    if(!boton){
+        return;
+    }
+    if(boton.classList.contains("btn-comprar")){
+        carrito = [];
+        actualizarCarrito();
+    }
+})
 
 //EVENTOS PARA AGREGAR, QUITAR O ELIMINAR UN PRODUCTO DEL CARRITO
 listaCarrito.addEventListener("click", (e) => {
@@ -192,7 +215,6 @@ listaCarrito.addEventListener("click", (e) => {
     }
 
 })
-
 
 mostrarCarrito();
 actualizarContador();

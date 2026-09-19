@@ -28,7 +28,7 @@ function mostrarProductos(array){
     //Creación de mensaje en caso de que no se encuentren productos
     if(array.length === 0){
         contenedorProductos.innerHTML = `
-            <div class= "sin-resultados">
+            <div class= "card">
                 <h2>No se encontraron productos</h2>
                 <p>Intente con otra búsqueda o categoría.</p>
             </div>`;
@@ -54,7 +54,7 @@ function mostrarProductos(array){
 // Función para mostrar un mensaje de error en caso de que falle la carga de productos
 function mostrarCardError(){
     contenedorProductos.innerHTML = `
-        <div class="card-error">
+        <div class="card">
             <h2>Error al cargar los productos</h2>
             <p>Por favor, inténtelo de nuevo más tarde.</p>
         </div>
@@ -62,7 +62,7 @@ function mostrarCardError(){
 }
 // Función para crear los botones de categorías
 function crearBotonesCategorias(cat) {
-    return `<button class= "btn-categoria btn btn-color-cat"> ${cat}</button>`;
+    return `<button class= "btn-categoria btn"> ${cat}</button>`;
 }
 // Función para mostrar los botones de categorías en el HTML
 function mostrarBotonesCategorias() {
